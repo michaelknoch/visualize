@@ -1,66 +1,30 @@
 'use strict';
 
 var colors = ['#3498db', '#d35400', '#2980b9', '#16a085', '#27ae60', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)'];
-var videos = ["Alt-J - _Tessellate.mp4",
-    "Modeselektor - German Clap - Live Berlin 2011 Monkeytown.mp4",
-    "badkingdom.mp4",
-    "Fight Club Ending - Where is My Mind.mp4",
-    "nightstroll.mp4",
-    "seamonkey.mp4",
-    "sohn-wheel.mp4",
-    "timeisnow.mp4",
-    "Gigi D' Agostino- Blablabla.mp4",
-    "Daft Punk - Something About Us.mp4",
-    "Gorillaz - Clint Eastwood.mp4",
-    "Daft Punk - One More Time.mp4",
-    "Oasis - Wonderwall - Official Video.mp4",
-    "Gorillaz - Tomorrow Comes Today.mp4",
-    "Oasis - Some Might Say - Official Video.mp4",
-    "Gorillaz - Dirty Harry.mp4",
-    "Sizarr - Boarding Time (Official Video).mp4",
-    "Coldplay - Paradise [New Official Video].mp4",
-    "Sizarr - Scooter Accident (Official Video).mp4",
-    "Nirvana - Come As You Are - VIDEO.mp4",
-    "Daft Punk - _Harder Better Faster Stronger_ (LIVE @ Alive 2007) (Official Music .mp4",
-    "Dapayk & Padberg _Razorskit_ (Official Music Video).mp4",
-    "Dapayk & Padberg _Layers_ (Official Video).mp4",
-    "Joachim Pastor - Braumstig (original mix).mp4",
-    "Joachim Pastor - Born and Left (official video)   Parquet 055.mp4",
-    "Kollektiv Turmstrasse - Tristesse [HD 720p].mp4",
-    "Urban Cone - Urban Photograph Official Video.mp4",
-    "M83 - 01 - We Own The Sky (MELT! 2012).mp4",
-    "The Kooks - Sway.mp4",
-    "R.E.M. - Losing My Religion (Video).mp4",
-    "Coldplay - Strawberry Swing.mp4",
-    "Radiohead - Karma Police.mp4",
-    "Radiohead - House of Cards.mp4",
-    "Pixies - Where Is My Mind_ (Music Video).mp4",
-    "Shift.mp4",
-    "breakdance.mp4",
-    "The Sound of Animals Fighting - Another Leather Lung (Official Video).mp4",
-    "Star Slinger - Mornin' (Music Video Directed by Alan Jensen).mp4",
-    "Laurel Halo - Embassy.mp4",
-    "Regal Safari - Light.mp4",
-    "Tove Lo - Habits (Stay High) - Hippie Sabotage Remix.mp4",
-    "Tove Lo - Not On Drugs.mp4",
-    "Lucas Nord feat. Tove Lo - Run On Love.mp4",
-    "The Sound of Arrows - coming soon....mp4",
-    "Jonathan Johansson - Stockholm.mp4",
-    "The Sound of Arrows - Wonders.mp4",
-    "Peter_ Bjorn & John - Young Folks.mp4",
-    "Summer Like The Season -- If You're Not Weird_ Then You're Not Honest.mp4",
-    "Boys Noize   Jeffer.mp4",
-    "BOYS NOIZE - Jeffer (Music Video).mp4"
-];
+var videos = [];
 
 var fs = require('fs');
-var cache = {
-    '/etc': '/private/etc'
-};
-fs.realpath('/etc/passwd', cache, function(err, resolvedPath) {
-    if (err) throw err;
-    console.log(resolvedPath);
-});
+var vdir = 'app/videos';
+
+function getFiles(dir, files_) {
+    files_ = files_ || [];
+    if (typeof files_ === 'undefined') files_ = [];
+    var files = fs.readdirSync(dir);
+    for (var i in files) {
+        if (!files.hasOwnProperty(i)) continue;
+        var name = dir + '/' + files[i];
+        if (fs.statSync(name).isDirectory()) {
+            getFiles(name, files_);
+        } else {
+            if (!name.indexOf('.DS_Store') > -1) {
+                files_.push(name.substring(4));
+                console.info(name);
+            }
+        }
+    }
+    return files_;
+}
+videos = getFiles('app/videos');
 
 var videoque = [];
 
@@ -77,7 +41,7 @@ var colorVar = false;
 // check if all videos are spelled correctly
 for (var i = 0; i < videos.length; i++) {
     var src = videos[i];
-    video_1.setAttribute('src', 'videos/' + src);
+    video_1.setAttribute('src', src);
 }
 
 transition();
@@ -158,12 +122,12 @@ function transition() {
     videoque.splice(i, 1);
 
     if (active === 0) {
-        video_2.setAttribute('src', 'videos/' + src);
+        video_2.setAttribute('src', src);
         video_1.className = '';
         video_2.className = 'active';
         active = 1;
     } else {
-        video_1.setAttribute('src', 'videos/' + src);
+        video_1.setAttribute('src', src);
         video_2.className = '';
         video_1.className = 'active';
         active = 0;
