@@ -1,7 +1,6 @@
 'use strict';
 
 var colors = ['#3498db', '#d35400', '#2980b9', '#16a085', '#27ae60', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)'];
-
 var videos = ["Alt-J - _Tessellate.mp4",
     "Modeselektor - German Clap - Live Berlin 2011 Monkeytown.mp4",
     "badkingdom.mp4",
@@ -53,6 +52,15 @@ var videos = ["Alt-J - _Tessellate.mp4",
     "Boys Noize   Jeffer.mp4",
     "BOYS NOIZE - Jeffer (Music Video).mp4"
 ];
+
+var fs = require('fs');
+var cache = {
+    '/etc': '/private/etc'
+};
+fs.realpath('/etc/passwd', cache, function(err, resolvedPath) {
+    if (err) throw err;
+    console.log(resolvedPath);
+});
 
 var videoque = [];
 

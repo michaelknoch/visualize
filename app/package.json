@@ -1,11 +1,5 @@
 {
-    "name": "Visualize Webkit",
-    "description": "Visualize Webkit",
-    "version": "0.1",
-    "main": "index.html",
-    "window": {
-        "toolbar": true,
-        "width": 660,
-        "height": 500
-    }
+    "name": "visualize",
+    "version": "0.1.0",
+    "main": "atom.js"
 }
