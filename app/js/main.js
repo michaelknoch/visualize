@@ -17,6 +17,7 @@ function getFiles(dir, files_) {
             getFiles(name, files_);
         } else {
             if (!name.indexOf('.DS_Store') > -1) {
+                // remove -> app/ <-
                 files_.push(name.substring(4));
                 console.info(name);
             }
