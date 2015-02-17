@@ -52,7 +52,7 @@ var timer = setInterval(function() {
     transition();
 }, 50000);
 
-
+// keyhandler
 document.onkeydown = function(event) {
     var overlay = null;
     // strobe on 1
