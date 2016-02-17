@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -6,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>visualize</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="css/normalize.css">
@@ -16,30 +17,35 @@
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
 
-            <section class="container_full" id="top">
+<section class="container_full" id="top">
 
-                <video src="videos/nightstroll.mp4" muted id="video_1" class="active" autoplay loop>
-                  <source type="video/mp4">
-                </video>
+    <div class="logowrapper">
+        <img src="img/tabularasalogo.svg" id="logo" class="logo">
+    </div>
+    <video src="videos/nightstroll.mp4" muted id="video_1" class="active" autoplay loop>
+        <source type="video/mp4">
+    </video>
 
-                <video src="videos/nightstroll.mp4" muted id="video_2" autoplay loop>
-                  <source type="video/mp4">
-                </video>
+    <video src="videos/nightstroll.mp4" muted id="video_2" autoplay loop>
+        <source type="video/mp4">
+    </video>
 
-                <div id="overlay-white" class="overlay"></div>
-                <div id="overlay-color" class="overlay"></div>
+    <div id="overlay-white" class="overlay"></div>
+    <div id="overlay-color" class="overlay"></div>
 
-            </section>
+</section>
 
-            <script src="components/jquery/dist/jquery.min.js"></script>
-            <script src="js/volume-meter.js"></script>
-            <script src="js/main.js"></script>
+<script src="components/jquery/dist/jquery.min.js"></script>
+<script src="js/volume-meter.js"></script>
+<script src="js/main.js"></script>
+<script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-        </body>
+</body>
 
-        </html>
+</html>

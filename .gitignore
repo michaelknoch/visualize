@@ -2,3 +2,4 @@ app/videos/*
 app/components
 node_modules
 Atom.app
+.idea/
